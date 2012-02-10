@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-ENV['BUNDLE_GEMFILE'] = File.expand_path('../../Gemfile', __FILE__)
+# ENV['BUNDLE_GEMFILE'] = File.expand_path('../../Gemfile', __FILE__)
+
+# $DEBUG = true
 
 require 'rubygems'
 require 'bundler'

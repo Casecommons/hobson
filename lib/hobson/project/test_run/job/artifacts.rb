@@ -18,6 +18,12 @@ class Hobson::Project::TestRun::Job
     options[:body] ||= path.read
     options[:public] = true unless options.has_key?(:public)
     file = Hobson.files.create(options)
+
+    # Freaking hack to make Local work.  Need a better way.
+    def file.public_url
+      "file://#{path}"
+    end
+
     public_url = CGI::unescape(file.public_url)
     self["artifact:#{name}"] = public_url
     logger.info "saving artifact #{name} -> #{public_url}"
