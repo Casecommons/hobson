@@ -48,6 +48,7 @@ module Hobson
       Process.detach(pid)
     else
       puts "Becoming a resque worker"
+      puts "#{Hobson.config.inspect}"
       work.call
     end
   end

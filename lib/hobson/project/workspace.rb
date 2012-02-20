@@ -18,6 +18,12 @@ class Hobson::Project::Workspace
   end
   alias_method :path, :root
 
+  def config
+    @config ||= begin
+      YAML.load_file(root+'config/hobson.yml')
+    end
+  end
+
   def checkout! sha
     logger.info "checking out #{sha}"
     execute "git fetch --all && git reset --hard #{sha} && git clean -df"
@@ -80,6 +86,7 @@ class Hobson::Project::Workspace
       status_file.open{|status|
         status.read # ignore existing content
         begin
+          logger.info "*****************Hobson.config #{config.inspect}"
           fork_and_execute(command) do
             status.read.split("\n").each{|line|
               if line =~ /^TEST:([^:]+):(START|COMPLETE):(\d+\.\d+)(?::(PASS|FAIL|PENDING))?$/
@@ -110,6 +117,7 @@ class Hobson::Project::Workspace
         --format pretty --out log/feature_run#{@test_run_index}
         --format Hobson::Formatters::Cucumber --out #{hobson_status_file}
         #{tests*' '}
+        #{config[:cucumber_filter]}
       ]
     when :specs
       %W[
@@ -118,6 +126,7 @@ class Hobson::Project::Workspace
         --format documentation --out log/spec_run#{@test_run_index}
         --format Hobson::Formatters::Rspec --out #{hobson_status_file}
         #{tests*' '}
+        #{config[:rspec_filter]}
       ]
     when :test_units
       %W[echo not yet supported && false]
