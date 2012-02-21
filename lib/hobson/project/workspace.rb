@@ -116,8 +116,8 @@ class Hobson::Project::Workspace
         --require #{Hobson.lib.join('hobson/formatters/cucumber.rb')}
         --format pretty --out log/feature_run#{@test_run_index}
         --format Hobson::Formatters::Cucumber --out #{hobson_status_file}
-        #{tests*' '}
         #{config[:cucumber_filter]}
+        #{tests*' '}
       ]
     when :specs
       %W[
@@ -125,8 +125,8 @@ class Hobson::Project::Workspace
         --require #{Hobson.lib.join('hobson/formatters/rspec.rb')}
         --format documentation --out log/spec_run#{@test_run_index}
         --format Hobson::Formatters::Rspec --out #{hobson_status_file}
-        #{tests*' '}
         #{config[:rspec_filter]}
+        #{tests*' '}
       ]
     when :test_units
       %W[echo not yet supported && false]

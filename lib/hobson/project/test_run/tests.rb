@@ -34,13 +34,15 @@ class Hobson::Project::TestRun::Tests
 
   TYPES = {
     'spec'    => 'spec/**/*_spec.rb',
+    # 'spec'    => 'spec/integrations/**/*_spec.rb',
+    # 'spec'    => 'spec/controllers/api/**/*_spec.rb'
     'feature' => 'features/**/*.feature',
   }
 
   # scans the workspace
   def detect!
     TYPES.values.
-      map{ |path| Dir[test_run.workspace.root.join(path)] }.
+      map{ |path| Dir[test_run.workspace.root.join(path)]}.
       flatten.
       map{ |path| Pathname.new(path).relative_path_from(test_run.workspace.root).to_s }.
       each{ |name| self << name }
