@@ -103,7 +103,7 @@
             %tr{:class => [result.downcase, test.status]}
               %td
                 - if job.present?
-                  %a{:href => "ssh://#{job['hostname']}"} Job #{job.index}
+                  %strong Job #{job.index} - #{job['hostname']}
               %td= test.name
               %td= test.tries
               %td= test.est_runtime.presence || 'unknown'
