@@ -36,7 +36,7 @@ class Hobson::Project::TestRun::Tests
     'spec'    => 'spec/**/*_spec.rb',
     # 'spec'    => 'spec/integrations/**/*_spec.rb',
     # 'spec'    => 'spec/controllers/api/**/*_spec.rb'
-    'feature' => 'features/**/*.feature',
+    'feature' => 'features/**/*.feature'
   }
 
   # scans the workspace
