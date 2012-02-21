@@ -86,7 +86,6 @@ class Hobson::Project::Workspace
       status_file.open{|status|
         status.read # ignore existing content
         begin
-          logger.info "*****************Hobson.config #{config.inspect}"
           fork_and_execute(command) do
             status.read.split("\n").each{|line|
               if line =~ /^TEST:([^:]+):(START|COMPLETE):(\d+\.\d+)(?::(PASS|FAIL|PENDING))?$/
