@@ -33,7 +33,7 @@ class Hobson::Project::TestRun::Tests
   end
 
   TYPES = {
-    'spec'    => 'spec/**/*_spec.rb',
+    # 'spec'    => 'spec/**/*_spec.rb',
     # 'spec'    => 'spec/integrations/**/*_spec.rb',
     # 'spec'    => 'spec/controllers/api/**/*_spec.rb'
     'feature' => 'features/**/*.feature'
