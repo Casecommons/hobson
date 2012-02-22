@@ -24,7 +24,7 @@ class Hobson::Project::TestRun::Job
 
     abort?
     preparing!
-    workspace.prepare
+    eval_hook :prepare || workspace.prepare
     eval_hook :setup
 
     abort?
