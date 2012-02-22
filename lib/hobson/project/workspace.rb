@@ -58,7 +58,7 @@ class Hobson::Project::Workspace
   def prepare
     # execute '(which bundle || gem install bundler) && bundle check || bundle install' if bundler?
     # CB2 customization
-    execute '(which bundle || gem install bundler) && bundle check || bundle install --without development debug19' if bundler?
+    execute '(which bundle || gem install bundler) && bundle check || bundle install --without debug19' if bundler?
     root.join('log').mkpath
   end
 
