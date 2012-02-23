@@ -34,7 +34,7 @@ class Hobson::Project::TestRun::Tests
 
   TYPES = {
     # 'spec'    => 'spec/**/*_spec.rb',
-    'feature' => 'features/users/**/*.feature'
+    'feature' => 'features/**/*.feature'
   }
 
   # scans the workspace
